@@ -12,9 +12,10 @@ const User = require("../bin/models/users.js");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
-dotenv.config({ path: "api/.env" });
+dotenv.config({ path: "../api/.env" });
 
 const MONGODB_URL = process.env.MONGODB_URL;
+console.log(MONGODB_URL);
 
 // connect to database
 

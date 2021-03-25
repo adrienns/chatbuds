@@ -1,0 +1,43 @@
+body {
+  /* background-color: rgb(241, 241, 239); */
+  background-color: rgb(26, 26, 26);
+}
+
+.main-page-text {
+  color: #fff4d6;
+  letter-spacing: 1.5px;
+  font-size: 60px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  padding: 20px 0px 20px 0px;
+  color: transparent;
+  transform: translate(-57px, -40%);
+}
+
+.main-page-text:before {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  color: #fff4d6;
+  white-space: nowrap;
+  overflow: hidden;
+  content: attr(data-text);
+  border-right: 1px solid #fff4d6;
+  animation: type 2s steps(21);
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+body {
+  margin: 60px;
+  background-color: #211b24;
+}

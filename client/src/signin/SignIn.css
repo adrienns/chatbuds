@@ -12,6 +12,10 @@
 }
 
 .chat-window-body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+
   width: 600px;
   position: relative;
   color: #fff4d6;
@@ -32,7 +36,8 @@
 }
 
 .chat-body {
-  position: relative;
+  flex-grow: 1;
+  /* position: relative; */
   overflow-y: scroll;
   max-height: 80%;
   margin: 10px 0px 10px 0px;

@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import io from "socket.io-client";
 import { ChatContext } from "./ContextAPI";
 import axios from "axios";
 import "./signin/SignIn.css";
-
+import { random_color } from "./randomColors.js";
+import ScrollToBottom from "./ScrollToBotttom";
 const socket = io.connect("http://localhost:9000");
 
 const Chat = () => {
@@ -11,30 +12,6 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const { name } = useContext(ChatContext);
-
-  const bottomEl = useRef(null);
-
-  const scrollToBottom = () => {
-    bottomEl.current.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
-  const color = () => {};
-
-  const colors = [
-    "#05f79d",
-    "#f7f605",
-    "#38f705",
-    "#00ff00",
-    "#fbec07",
-    "#04faed",
-    "#fa7304",
-    "#FFC000",
-    "#00FFFF",
-    "#F2FF66",
-  ];
-  let random_color = colors[Math.floor(Math.random() * colors.length)];
 
   const fetchChatHistory = () => {
     axios.get("http://localhost:9000/api/chats").then(
@@ -83,7 +60,6 @@ const Chat = () => {
   useEffect(() => {
     socket.on("message", (message) => {
       setMessages([...messages, message]);
-      scrollToBottom();
       if (message.shouldFetchUsers) {
         fetchUsers();
       }
@@ -145,7 +121,7 @@ const Chat = () => {
                   <span>{el.text}</span>
                 </div>
               ))}
-            <div ref={bottomEl} className="list-bottom"></div>
+            <ScrollToBottom />
           </div>
 
           <div className="massage-submit">

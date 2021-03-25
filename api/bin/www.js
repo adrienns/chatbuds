@@ -7,17 +7,18 @@
 var { app } = require("../app");
 var debug = require("debug")("server:server");
 var http = require("http");
-// const handleUser = require("../chatusers.js");
 const Chat = require("../bin/models/chat.js");
 const User = require("../bin/models/users.js");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-// const { connect } = require("../app.js");
+dotenv.config({ path: "api/.env" });
+
+const MONGODB_URL = process.env.MONGODB_URL;
 
 // connect to database
 
-const dbURI =
-  "mongodb+srv://adri:holly@cluster0.lvoer.mongodb.net/chat-database?retryWrites=true&w=majority";
+const dbURI = MONGODB_URL;
 
 const connect = mongoose.connect(dbURI, {
   useNewUrlParser: true,
@@ -71,16 +72,6 @@ io.on("connection", (socket) => {
         }
       });
     });
-
-    // if (error) {
-    //   console.log(error);
-    //   return callback(error);
-    // }
-    // socket.emit("message", {
-    //   user: "admin",
-    //   text: ` welcome to the chat:)`,
-    // });
-    // console.log(" this is for the first time" );
   });
 
   socket.on("sendMessage", (message, name, callback) => {
@@ -114,8 +105,6 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
   });
 });
-
-// var server = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.

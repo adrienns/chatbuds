@@ -1,6 +1,6 @@
 import { ChatContext } from "../ContextAPI";
 import React, { useContext } from "react";
-import ChatWindow from "../chatwindow/ChatWindow";
+import SignIn from "../signin/SignIn";
 import IntoText from "../IntroText";
 import "./MainPage.css";
 
@@ -27,7 +27,7 @@ const MainPage = () => {
           <div className="line-3 float"></div>
         </div>
       </div>
-      <ChatWindow />
+      <SignIn />
     </div>
   );
 };

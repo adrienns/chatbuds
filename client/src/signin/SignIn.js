@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from "react";
-import "./ChatWindow.css";
+import React, { useContext } from "react";
+import "./SignIn.css";
 import { Link } from "react-router-dom";
 import { ChatContext } from "../ContextAPI";
 
-const ChatWindow = () => {
+const SignIn = () => {
   const { handleUserName, name } = useContext(ChatContext);
 
   const handleName = (event) => {
@@ -31,4 +31,4 @@ const ChatWindow = () => {
   );
 };
 
-export default ChatWindow;
+export default SignIn;

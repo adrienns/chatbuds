@@ -4,25 +4,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-// const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const APIRouter = require("./routes/api");
 
 const app = express();
-
-// connect to database
-
-// const dbURI =
-//   "mongodb+srv://adri:holly@cluster0.lvoer.mongodb.net/chat-database?retryWrites=true&w=majority";
-
-// const connect = mongoose.connect(dbURI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-// });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

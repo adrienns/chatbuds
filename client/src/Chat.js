@@ -3,9 +3,11 @@ import io from "socket.io-client";
 import { ChatContext } from "./ContextAPI";
 import axios from "axios";
 import "./signin/SignIn.css";
+// import { formattedDate } from "./ConvertDate";
 import { random_color } from "./randomColors.js";
 import ScrollToBottom from "./ScrollToBotttom";
-const socket = io.connect("http://localhost:9000");
+import { API_URL } from "./utils/constants";
+const socket = io.connect(`${API_URL}`);
 
 const Chat = () => {
   const [message, setMessage] = useState("");
@@ -13,8 +15,10 @@ const Chat = () => {
   const [users, setUsers] = useState([]);
   const { name } = useContext(ChatContext);
 
+  console.log(messages);
+
   const fetchChatHistory = () => {
-    axios.get("http://localhost:9000/api/chats").then(
+    axios.get(`${API_URL}/api/chats`).then(
       (res) => setMessages(res.data),
 
       (error) => {
@@ -25,9 +29,7 @@ const Chat = () => {
 
   const fetchUsers = () => {
     console.log("fetch users");
-    axios
-      .get("http://localhost:9000/api/users")
-      .then((res) => setUsers(res.data));
+    axios.get(`${API_URL}/api/users`).then((res) => setUsers(res.data));
     console.log(users);
   };
 
@@ -119,6 +121,9 @@ const Chat = () => {
                     {el.name}
                   </span>{" "}
                   <span>{el.text}</span>
+                  {/* <span className="message-date">
+                    {formattedDate(el.createdAt)}
+                  </span> */}
                 </div>
               ))}
             <ScrollToBottom />

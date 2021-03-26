@@ -44,13 +44,18 @@
 }
 
 .chat-text-box {
+  word-wrap: break-word;
+
   border-radius: 20px;
   margin: 10px 40px 10px 10px;
   background-color: rgb(54, 53, 53);
-  line-height: 25px;
+  line-height: 28px;
   padding: 13px;
 }
 
+.message-date {
+  float: right;
+}
 .chat-window-container-closed {
   display: none;
 }
@@ -146,7 +151,7 @@
   width: 15%;
   background-color: rgb(230, 11, 157);
   box-shadow: 7px 2px 10px;
-
+  cursor: pointer;
   color: rgb(8, 3, 0);
   font-weight: bolder;
   padding: 12.5px;

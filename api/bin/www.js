@@ -57,7 +57,7 @@ io.on("connection", (socket) => {
             console.log("user saved");
             socket.broadcast.emit("message", {
               user: "admin",
-              text: ` ${name}has joined the chat`,
+              text: ` ${name} has joined the chat`,
               shouldFetchUsers: true,
             });
             callback();

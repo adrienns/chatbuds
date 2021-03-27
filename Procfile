@@ -1,1 +1,1 @@
-web: NODE_ENV=production node ./api/bin/www.js
+web: npm run prod

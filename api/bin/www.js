@@ -7,6 +7,7 @@
 var { app } = require("../app");
 var debug = require("debug")("server:server");
 var http = require("http");
+var https = require("https");
 const Chat = require("../bin/models/chat.js");
 const User = require("../bin/models/users.js");
 const mongoose = require("mongoose");
@@ -36,8 +37,13 @@ app.set("port", port);
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(app);
+var server;
+if (process.env.NODE_ENV != "production") {
+  server = http.createServer(app);
+}
+{
+  server = https.createServer(app);
+}
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {

@@ -3,5 +3,4 @@ api/node_modules
 .vscode
 node_modules
 client/node_modules
-
-
+.env

@@ -1,1 +1,1 @@
-web: node api/bin/www.js
+web: NODE_ENV=production node ./api/bin/www.js

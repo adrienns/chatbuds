@@ -4,3 +4,9 @@ api/node_modules
 node_modules
 client/node_modules
 .env
+
+# testing
+/coverage
+
+# production
+/build

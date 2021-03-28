@@ -23,8 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.use("/api", APIRouter);
-app.use("/", indexRouter);
-console.log("NO MATCHES");
+// app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

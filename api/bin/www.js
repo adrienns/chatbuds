@@ -37,12 +37,8 @@ app.set("port", port);
 /**
  * Create HTTP server.
  */
-var server;
-if (process.env.NODE_ENV != "production") {
-  server = http.createServer(app);
-} else {
-  server = https.createServer(app);
-}
+var server = http.createServer(app);
+
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {

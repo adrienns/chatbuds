@@ -5,6 +5,7 @@ const userSchema = new Schema(
   {
     name: { type: String, required: false },
     random_color: { type: String, required: false },
+    socket_id: { type: String, required: false },
   },
   { timestamps: true }
 );

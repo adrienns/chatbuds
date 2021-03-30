@@ -11,8 +11,13 @@ const SignIn = () => {
     handleUserName(value);
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log("djkfhfkdshhdkg");
+  };
+
   return (
-    <div className="submit-name-container">
+    <form className="submit-name-container" onSubmit={onSubmit}>
       <input
         className="your-name-bar"
         type="text"
@@ -20,14 +25,17 @@ const SignIn = () => {
         name="name"
         maxLength="20"
         placeholder="your name..."
+        autoComplete="off"
       ></input>
       <Link
         onClick={(event) => (!name ? event.preventDefault() : null)}
         to={`/chat?name=${name}`}
       >
-        <button className="chat-window-btn">SUBMIT </button>
+        <button type="submit" className="chat-window-btn">
+          SUBMIT{" "}
+        </button>
       </Link>
-    </div>
+    </form>
   );
 };
 

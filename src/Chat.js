@@ -138,6 +138,7 @@ const Chat = () => {
               name="name"
               placeholder="write your message here..."
               required
+              autoComplete="off"
             />
             <button className="chat-bar-btn" type="submit">
               SEND

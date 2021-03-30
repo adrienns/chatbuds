@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "client-dev": "NODE_ENV=development react-scripts start",
     "start": "npm run server_prod",
     "server_dev": "NODE_ENV=development nodemon --inspect --experimental-modules ./api/bin/www.js",
     "server_prod": "NODE_ENV=production node ./api/bin/www.js",

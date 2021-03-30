@@ -12,6 +12,7 @@ const Chat = require("../bin/models/chat.js");
 const User = require("../bin/models/users.js");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const { use } = require("../routes");
 dotenv.config({ path: ".env" });
 
 const MONGODB_URL = process.env.MONGODB_URL;
@@ -42,7 +43,10 @@ var server = http.createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {
+  let userName = "";
+  console.log(userName);
   socket.on("join", ({ name, random_color }, callback) => {
+    userName = name;
     console.log("a user connected <333");
 
     connect.then((db) => {
@@ -60,13 +64,14 @@ io.on("connection", (socket) => {
               text: ` ${name} has joined the chat`,
               shouldFetchUsers: true,
             });
+
             callback();
           });
         } else {
           console.log("yeaahh it does exist " + name);
           socket.broadcast.emit("message", {
             user: "admin",
-            text: ` ${name}has joined the chat`,
+            text: ` ${name} has joined the chat`,
             shouldFetchUsers: true,
           });
           callback();
@@ -103,6 +108,11 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
+    socket.broadcast.emit("message", {
+      user: "admin",
+      text: ` ${userName} left the chat`,
+    });
+
     console.log("user disconnected");
   });
 });

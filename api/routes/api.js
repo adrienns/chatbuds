@@ -14,6 +14,8 @@ router.get("/chats", (req, res) => {
 });
 
 router.get("/users", (req, res) => {
+  console.log("db connect???");
+
   Users.find()
     .then((result) => {
       res.send(result);

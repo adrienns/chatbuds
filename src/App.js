@@ -1,7 +1,7 @@
 import "./App.css";
 import { ChatProvider } from "./ContextAPI";
 import MainPage from "./mainpage/MainPage";
-import Chat from "./Chat";
+import Chat from "./chat/Chat";
 import React from "react";
 import {
   BrowserRouter as Router,

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import io from "socket.io-client";
-import { ChatContext } from "./ContextAPI";
+import { ChatContext } from "../ContextAPI";
 import axios from "axios";
-import "./signin/SignIn.css";
+import "./Chat.css";
 // import { formattedDate } from "./ConvertDate";
-import { random_color } from "./randomColors.js";
-import ScrollToBottom from "./ScrollToBotttom";
-import { API_URL } from "./utils/constants";
+import { random_color } from "../randomColors.js";
+import ScrollToBottom from "../ScrollToBotttom";
+import { API_URL } from "../utils/constants";
 const socket = io.connect(`${API_URL}`);
 
 const Chat = () => {

@@ -31,7 +31,7 @@ const SignIn = () => {
         onClick={(event) => (!name ? event.preventDefault() : null)}
         to={`/chat?name=${name}`}
       >
-        <button type="submit" className="chat-window-btn">
+        <button type="submit" className="submit-btn">
           SUBMIT{" "}
         </button>
       </Link>

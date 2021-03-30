@@ -4,6 +4,22 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: ".env" });
+
+const MONGODB_URL = process.env.MONGODB_URL;
+console.log(MONGODB_URL);
+
+const dbURI = MONGODB_URL;
+
+const connect = mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 const indexRouter = require("./routes/index");
 const APIRouter = require("./routes/api");
@@ -41,4 +57,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = { app };
+module.exports = { app, connect };

@@ -3,7 +3,8 @@ import io from "socket.io-client";
 import { ChatContext } from "../ContextAPI";
 import axios from "axios";
 import "./Chat.css";
-// import { formattedDate } from "./ConvertDate";
+import Participants from "./Participants";
+import ChatMessage from "./ChatMessage";
 import { random_color } from "../randomColors.js";
 import ScrollToBottom from "../ScrollToBotttom";
 import { API_URL } from "../utils/constants";
@@ -96,14 +97,8 @@ const Chat = () => {
           <div className="participants_name">
             {messages.length === 0
               ? null
-              : users.map((el, i) => (
-                  <div className="participant-name-text" key={i}>
-                    <span
-                      style={{ background: el.random_color }}
-                      className="participant-name-dot"
-                    ></span>
-                    <span> {el.name}</span>
-                  </div>
+              : users.map((el, index) => (
+                  <Participants el={el} index={index} />
                 ))}
           </div>
         </div>
@@ -113,18 +108,7 @@ const Chat = () => {
           <div className="chat-body">
             {messages &&
               messages.map((el, index) => (
-                <div className="chat-text-box" key={index}>
-                  <span
-                    className="user-name"
-                    style={{ color: el.random_color }}
-                  >
-                    {el.name}
-                  </span>{" "}
-                  <span>{el.text}</span>
-                  {/* <span className="message-date">
-                    {formattedDate(el.createdAt)}
-                  </span> */}
-                </div>
+                <ChatMessage el={el} index={index} />
               ))}
             <ScrollToBottom />
           </div>

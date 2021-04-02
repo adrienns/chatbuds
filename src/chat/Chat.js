@@ -88,18 +88,18 @@ const Chat = () => {
         <div className="chat-window-participants">
           <h4 className="participants-text">participants</h4>{" "}
           <div className="participants_name">
-            {users.map((el, index) => (
-              <Participants el={el} index={index} />
-            ))}
+            {users &&
+              users.map((el, index) => <Participants el={el} index={index} />)}
           </div>
         </div>
         <form onSubmit={submitChatText} className="chat-window-body">
           <div className="chat-text">CHAT ROOM</div>
 
           <div className="chat-body">
-            {messages.map((el, index) => (
-              <ChatMessage el={el} index={index} />
-            ))}
+            {messages &&
+              messages.map((el, index) => (
+                <ChatMessage el={el} index={index} />
+              ))}
             <ScrollToBottom />
           </div>
 

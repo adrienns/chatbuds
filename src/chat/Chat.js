@@ -43,13 +43,6 @@ const Chat = () => {
   // };
 
   useEffect(() => {
-    // axios
-    // .post("http://localhost:9000/api/join", { name, random_color })
-    // .then((res) => {
-    //   fetchChatHistory();
-    //   fetchUsers();
-    //   console.log("joining");
-    // });
     socket.emit("join", { name, random_color }, (error) => {
       fetchChatHistory();
       fetchUsers();
@@ -95,21 +88,18 @@ const Chat = () => {
         <div className="chat-window-participants">
           <h4 className="participants-text">participants</h4>{" "}
           <div className="participants_name">
-            {messages.length === 0
-              ? null
-              : users.map((el, index) => (
-                  <Participants el={el} index={index} />
-                ))}
+            {users.map((el, index) => (
+              <Participants el={el} index={index} />
+            ))}
           </div>
         </div>
         <form onSubmit={submitChatText} className="chat-window-body">
           <div className="chat-text">CHAT ROOM</div>
 
           <div className="chat-body">
-            {messages &&
-              messages.map((el, index) => (
-                <ChatMessage el={el} index={index} />
-              ))}
+            {messages.map((el, index) => (
+              <ChatMessage el={el} index={index} />
+            ))}
             <ScrollToBottom />
           </div>
 
